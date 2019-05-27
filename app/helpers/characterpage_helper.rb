@@ -1,0 +1,2 @@
+module CharacterpageHelper
+end
