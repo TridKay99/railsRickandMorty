@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+puts "Start of Seeding..."
+
+params = {
+  quote: Faker::TvShows::RickAndMorty.quote
+}
+puts "creating quote # {params}"
+home = Home.new(params)
+home.save
+
+puts "seeding over"
