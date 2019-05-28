@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
-  root 'characterpage#index'
+  
+
+  root 'home#index'
 end
 
