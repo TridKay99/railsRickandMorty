@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   get '/characters', to: 'characterpage#index', as: 'characters'
   get '/episodes', to: 'episodes#index', as: 'episodes'
   get '/locations', to: 'location#index', as: 'locations'

@@ -9,18 +9,38 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <header>
-    <ul>
-      <a href="registration.html">SignUp Or Login</a>
-      <a><%= link_to 'Edpisodes', episodes_path%>
-      <a><%= link_to 'Character List', characters_path %></a>
-      <a><%= link_to 'Home', root_path%>
-      <a><%= link_to 'Locations', locations_path %></a>
-      <a><%= link_to 'Quiz', quiz_path %>
-    </ul>
-  </header>
-
   <body>
-    <%= yield %>
+ <div class="container">
+    <div id="navbar">
+    <ul class="nav navbar-nav">
+      <a><%= link_to 'Home', root_path %></a>
+      <a><%= link_to 'Edpisodes', episodes_path%></a>
+      <a><%= link_to 'Character List', characters_path %></a>
+      <a><%= link_to 'Locations', locations_path %></a>
+      <a><%= link_to 'Quiz', quiz_path %></a>
+    </ul>
+    <ul class="nav navbar-nav pull-right">
+      <% if user_signed_in? %>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <a><%= link_to 'Profile', edit_user_registration_path %></a>
+            <a><%= link_to 'Log out', destroy_user_session_path, method: :delete %></a>
+          </ul>
+        </a>
+      <% else %>
+        <a><%= link_to 'Log In', new_user_session_path %></a>
+        <a><%= link_to 'Sign Up', new_user_registration_path %></a>
+      <% end %>
+    </ul>
+  </div>
+  <% flash.each do |key, value| %>
+    <%= value %>
+  <% end %>
+  
+  <%= yield %>
+  </div>
   </body>
 </html>
